@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Back to 301</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="fadeOverlay"></div>
+  <div id="sceneContainer"></div>
+
+<!-- Uzay Canvas Modalı -->
+<!-- Uzay Canvas Modalı -->
+ <div id="sceneContainer">
+  <img id="sceneBackground" src="assets/yıldızlar.png" alt="Background" />
+  <!-- diğer objeler -->
+</div>
+<audio id="bgMusic" src="assets/background-music.mp3" loop></audio>
+<audio id="windowMusic" src="assets/window-music.mp3" loop></audio>
+<div id="spaceCanvasModal" class="space-canvas-modal">
+  <canvas id="spaceCanvas"></canvas>
+  <div id="canvasHint" class="canvas-hint"></div>
+  <div id="canvasBackBtn" class="canvas-back-btn">Geri Dön</div>
+</div>
+  <div id="mektupModal" class="hidden" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <div class="slide-stack">
+        <img id="prevSlide" class="slide-back" src="" alt="Önceki Görsel" />
+        <img id="modalImage" class="slide-front" src="" alt="Aktif Görsel" />
+        <img id="nextSlide" class="slide-back" src="" alt="Sonraki Görsel" />
+      </div>
+      <div id="modalNote" class="modal-note" aria-live="polite"></div>
+      <!-- Not butonlar kaldırıldı, sadece klavye navigasyon kullanılıyor -->
+    </div>
+  </div>
+
+  <script src="sceneEngine.js"></script>
+</body>
+</html>
