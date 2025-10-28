@@ -1,26 +1,10 @@
-// WEBP destek kontrolü
-async function supportsWebP() {
-  if (!self.createImageBitmap) return false;
-  const webpData =
-    'data:image/webp;base64,UklGRiIAAABXRUJQVlA4TAYAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
-  return createImageBitmap(await fetch(webpData).then(r => r.blob()))
-    .then(() => true)
-    .catch(() => false);
-}
-
-// Görsel yolunu optimize et
-function getOptimizedPath(path) {
-  return path.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-}
-
-
 const scenes = {
   entry: {
-    background: 'assets/background.webp',
+    background: 'assets/background.png',
     objects: [
       {
         id: 'door',
-        src: 'assets/kapi.webp',
+        src: 'assets/kapi.png',
         style: {
           top: '57%',
           left: '52%',
@@ -35,11 +19,11 @@ const scenes = {
     ]
   },
   koridor: {
-    background: 'assets/koridor.webp',
+    background: 'assets/koridor.png',
     objects: [
       {
         id: 'next',
-        src: 'assets/forward.webp',
+        src: 'assets/forward.png',
         style: {
           bottom: '-8%',
           left: '46.3%',
@@ -54,11 +38,11 @@ const scenes = {
     ]
   },
   yatakOdasi: {
-    background: 'assets/yatak.webp',
+    background: 'assets/yatak.png',
     objects: [
       {
         id: 'mektup',
-        src: 'assets/mektup.webp',
+        src: 'assets/mektup.png',
         style: {
           bottom: '18%',
           right: '22%',
@@ -68,12 +52,16 @@ const scenes = {
         class: 'interactive-object hover-glow',
         onClick: 'showModal',
         sound: 'assets/click.mp3',
-        modalImages: ['assets/mektup1.webp', 'assets/mektup2.webp'],
-        modalNotes: []
+        modalImages: [
+          'assets/mektup1.png',
+          'assets/mektup2.png'
+        ],
+        modalNotes: [
+        ]
       },
       {
         id: 'turnBack',
-        src: 'assets/back.webp',
+        src: 'assets/back.png',
         style: {
           top: '10%',
           left: '5%',
@@ -87,11 +75,11 @@ const scenes = {
     ]
   },
   arka: {
-    background: 'assets/arka.webp',
+    background: 'assets/arka.png',
     objects: [
       {
         id: 'tv',
-        src: 'assets/tv.webp',
+        src: 'assets/tv.png',
         style: {
           top: '-6%',
           left: '1.5%',
@@ -101,29 +89,35 @@ const scenes = {
         class: 'interactive-object hover-glow',
         onClick: 'showIntroModal',
         sound: 'assets/click.mp3',
-        modalImages: ['assets/tv1.webp', 'assets/tv2.webp'],
+        modalImages: [
+          'assets/tv1.png',
+          'assets/tv2.png'
+        ],
         modalNotes: [
           'Hatırlıyor musun, ilk beraber izlediğimiz film...',
-          'zaten çok izlemedik, izleyecek daha çok şeyimiz vardı...'
+          'zaten çok izlemedik, izleyecek daha çok şeyimiz vardı...',
         ]
       },
-      {
-        id: 'pencere',
-        src: 'assets/window.webp',
-        style: {
-          top: '-16.4%',
-          right: '-11%',
-          width: '72vw',
-          height: '107vh'
-        },
-        class: 'interactive-object hover-glow',
-        onClick: 'showIntroModal',
-        sound: 'assets/click.mp3',
-        modalNotes: ['Gökyüzünde parlayan Tempel 1 Kuyruklu Yıldızı 🌠']
-      },
+   {
+  id: 'pencere',
+  src: 'assets/window.png',
+  style: {
+    top: '-16.4%',
+    right: '-11%',
+    width: '72vw',
+    height: '107vh',
+  },
+  class: 'interactive-object hover-glow',
+  onClick: 'showIntroModal', 
+  sound: 'assets/click.mp3',
+  modalNotes: [
+    'Gökyüzünde parlayan Tempel 1 Kuyruklu Yıldızı 🌠'
+  ]
+},
+
       {
         id: 'gitar',
-        src: 'assets/gitar.webp',
+        src: 'assets/gitar.png',
         style: {
           bottom: '1.7%',
           left: '41.6%',
@@ -136,7 +130,7 @@ const scenes = {
       },
       {
         id: 'albumFrame',
-        src: 'assets/album1.webp',
+        src: 'assets/album1.png',
         style: {
           bottom: '20%',
           right: '67%',
@@ -146,7 +140,19 @@ const scenes = {
         class: 'interactive-object hover-glow',
         onClick: 'showIntroModal',
         sound: 'assets/click.mp3',
-        modalImages: Array.from({ length: 11 }, (_, i) => `assets/album${i + 1}.webp`),
+        modalImages: [
+          'assets/album1.jpg',
+          'assets/album2.jpg',
+          'assets/album3.jpg',
+          'assets/album4.jpg',
+          'assets/album5.jpg',
+          'assets/album6.jpg',
+          'assets/album7.jpg',
+          'assets/album8.jpg',
+          'assets/album9.jpg',
+          'assets/album10.jpg',
+          'assets/album11.jpg'
+        ],
         modalNotes: [
           'Uzun süre sonra ilk defa birlikte fotoğraf çekilmiştik...',
           'ilk kıvılcımlarımız...',
@@ -164,7 +170,6 @@ const scenes = {
     ]
   }
 };
-
 
 let currentScene = 'entry';
 let modalImages = [];

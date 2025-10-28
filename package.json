@@ -1,0 +1,16 @@
+{
+  "name": "deploy-688003a54498c626d82a181c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sceneengine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.34.4",
+    "webp-converter": "^2.3.3"
+  }
+}
